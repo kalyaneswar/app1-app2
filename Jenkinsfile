@@ -6,6 +6,8 @@ pipeline {
         // Define Docker image names as environment variables
         APP1_IMAGE = "app1-image"
         APP2_IMAGE = "app2-image"
+        VERSION_APP1 = "v1.0"
+        VERSION_APP2 = "v1.0"
     }
 
     stages {
@@ -21,12 +23,12 @@ pipeline {
                 script {
                     // Navigate into the app1 directory and build Docker image
                     dir('app1') {
-                        sh 'docker build -t $APP1_IMAGE .'
+                        sh 'docker build -t $APP1_IMAGE:$VERSION_APP1 .'
                     }
 
                     // Navigate into the app2 directory and build Docker image
                     dir('app2') {
-                        sh 'docker build -t $APP2_IMAGE .'
+                        sh 'docker build -t $APP2_IMAGE:$VERSION_APP2 .'
                     }
                 }
             }
