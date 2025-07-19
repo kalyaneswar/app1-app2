@@ -34,23 +34,23 @@ pipeline {
             }
         }
 
-        // stage('Run Docker Containers') {
-        //     steps {
-        //         script {
-        //             // Stop and remove containers if already running (ignore errors)
-        //             sh '''
-        //                 docker rm -f app1-container || true
-        //                 docker rm -f app2-container || true
-        //             '''
+        stage('Run Docker Containers') {
+            steps {
+                script {
+                    // Stop and remove containers if already running (ignore errors)
+                    sh '''
+                        docker rm -f app1-container || true
+                        docker rm -f app2-container || true
+                    '''
 
-        //             // Run app1 container on port 8081
-        //             sh 'docker run -d -p 8081:80 --name app1-container $APP1_IMAGE'
+                    // Run app1 container on port 8081
+                    sh 'docker run -d -p 8081:80 --name app1-container $APP1_IMAGE:$VERSION_APP1'
 
-        //             // Run app2 container on port 8082
-        //             sh 'docker run -d -p 8082:80 --name app2-container $APP2_IMAGE'
-        //         }
-        //     }
-        // }
+                    // Run app2 container on port 8082
+                    sh 'docker run -d -p 8082:80 --name app2-container $APP2_IMAGE:$VERSION_APP2'
+                }
+            }
+        }
     }
 
     post {
