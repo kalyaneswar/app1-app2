@@ -5,7 +5,7 @@
   <title>App2 Login</title>
   <style>
     body {
-      background-color: #28a745; /* Green background for App2 */
+      background-color: #28a745; /* Green background */
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
@@ -30,11 +30,11 @@
 </head>
 <body>
   <h1>Welcome to App2</h1>
-  <p>Please enter your username to continue:</p>
+  <p>Please enter your username and age to continue:</p>
   
   <form onsubmit="handleLogin(event)">
-    <input type="text" id="username" placeholder="Enter username" required />
-    <br/>
+    <input type="text" id="username" placeholder="Enter username" required /><br/>
+    <input type="number" id="age" placeholder="Enter age" required min="1" /><br/>
     <button type="submit">Login</button>
   </form>
 
@@ -42,8 +42,15 @@
     function handleLogin(event) {
       event.preventDefault();
       const username = document.getElementById('username').value;
-      alert("Hello, " + username + "! You’ve logged into App2.");
-      // You can also redirect to dashboard or set local/session storage
+      const age = document.getElementById('age').value;
+
+      if (age <= 0) {
+        alert("Please enter a valid age.");
+        return;
+      }
+
+      alert(`Hello, ${username}! Your age is ${age}.`);
+      // You can redirect or store in sessionStorage/localStorage if needed
     }
   </script>
 </body>
