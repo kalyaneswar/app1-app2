@@ -51,6 +51,18 @@ pipeline {
                 }
             }
         }
+
+        stage('Tag images with Docker repository ') {
+            steps {
+                script{
+                    sh ''' 
+                        docker tag $APP1_IMAGE:$VERSION_APP1 kalyaneswarm/$APP1_IMAGE:$VERSION_APP1
+                        docker tag $APP2_IMAGE:$VERSION_APP2 kalyaneswarm/$APP2_IMAGE:$VERSION_APP2
+                    '''
+                }
+            }
+        }
+
         stage("Push docker images to docker repository") {
             steps{
                 script{
