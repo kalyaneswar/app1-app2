@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>App Login</title>
+  <title>App2 Login</title>
   <style>
     body {
-      background-color: #007BFF; /* Blue or Green depending on app */
+      background-color: #28a745; /* Green background for App2 */
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
@@ -22,14 +22,14 @@
       width: 200px;
     }
     button {
-      background-color: green;
-      color: #007BFF;
+      background-color: #007BFF;
+      color: white;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to App1</h1>
+  <h1>Welcome to App2</h1>
   <p>Please enter your username to continue:</p>
   
   <form onsubmit="handleLogin(event)">
@@ -42,8 +42,8 @@
     function handleLogin(event) {
       event.preventDefault();
       const username = document.getElementById('username').value;
-      alert("Hello, " + username + "!");
-      // You can redirect or store username in sessionStorage/localStorage
+      alert("Hello, " + username + "! You’ve logged into App2.");
+      // You can also redirect to dashboard or set local/session storage
     }
   </script>
 </body>
