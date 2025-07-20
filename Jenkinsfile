@@ -65,8 +65,8 @@ pipeline {
                         docker rm -f app1-container || true
                         docker rm -f app2-container || true
                     '''
-                    sh 'docker run -d -p 8081:80 --name app1-container kalyaneswam/$APP1_IMAGE:$VERSION_APP1'
-                    sh 'docker run -d -p 8082:80 --name app2-container kalyaneswam/$APP2_IMAGE:$VERSION_APP2'
+                    sh 'docker run -d -p 8081:80 --name app1-container kalyaneswarm/$APP1_IMAGE:$VERSION_APP1'
+                    sh 'docker run -d -p 8082:80 --name app2-container kalyaneswarm/$APP2_IMAGE:$VERSION_APP2'
                 }
             }
         }
