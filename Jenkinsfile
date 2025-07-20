@@ -51,6 +51,17 @@ pipeline {
                 }
             }
         }
+        stage("Push docker images to docker repository") {
+            steps{
+                script{
+                    sh '''
+                        docker push kalyaneswar/$APP1_IMAGE:$VERSION_APP1'
+                        docker push kalyaneswar/$APP2_IMAGE:$VERSION_APP2'
+
+                    '''
+                }
+            }
+        }
     }
 
     post {
