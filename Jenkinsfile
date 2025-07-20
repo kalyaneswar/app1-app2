@@ -38,19 +38,6 @@ pipeline {
             }
         }
 
-        stage('Run Docker Containers') {
-            steps {
-                script {
-                    sh '''
-                        docker rm -f app1-container || true
-                        docker rm -f app2-container || true
-                    '''
-                    sh 'docker run -d -p 8081:80 --name app1-container $APP1_IMAGE:$VERSION_APP1'
-                    sh 'docker run -d -p 8082:80 --name app2-container $APP2_IMAGE:$VERSION_APP2'
-                }
-            }
-        }
-
         stage('Tag Docker Images') {
             steps {
                 script {
@@ -67,6 +54,19 @@ pipeline {
                 script {
                     sh 'docker push kalyaneswarm/$APP1_IMAGE:$VERSION_APP1'
                     sh 'docker push kalyaneswarm/$APP2_IMAGE:$VERSION_APP2'
+                }
+            }
+        }
+
+        stage('Run Docker Containers') {
+            steps {
+                script {
+                    sh '''
+                        docker rm -f app1-container || true
+                        docker rm -f app2-container || true
+                    '''
+                    sh 'docker run -d -p 8081:80 --name app1-container kalyaneswam/$APP1_IMAGE:$VERSION_APP1'
+                    sh 'docker run -d -p 8082:80 --name app2-container kalyaneswam/$APP2_IMAGE:$VERSION_APP2'
                 }
             }
         }
