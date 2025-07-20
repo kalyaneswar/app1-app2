@@ -99,4 +99,4 @@ pipeline {
             echo '❌ Something went wrong during the pipeline.'
         }
     }
-}
+
