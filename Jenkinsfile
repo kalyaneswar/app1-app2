@@ -54,11 +54,9 @@ pipeline {
         stage("Push docker images to docker repository") {
             steps{
                 script{
-                    sh '''
-                        docker push kalyaneswarm/$APP1_IMAGE:$VERSION_APP1'
-                        docker push kalyaneswarm/$APP2_IMAGE:$VERSION_APP2'
-
-                    '''
+                    sh 'docker push kalyaneswarm/$APP1_IMAGE:$VERSION_APP1'  
+                    sh 'docker push kalyaneswarm/$APP2_IMAGE:$VERSION_APP2'
+                                                               
                 }
             }
         }
