@@ -2,49 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>App Login</title>
+  <title>App1 Login</title>
   <style>
     body {
-      background-color: #007BFF; /* Blue or Green depending on app */
+      background-color: blue;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 50px;
     }
-    input, button {
-      padding: 10px;
+    #main-content {
+      display: none;
+    }
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+    }
+    input[type="submit"] {
+      padding: 8px 16px;
       font-size: 16px;
       margin-top: 10px;
-      border: none;
-      border-radius: 5px;
-    }
-    input {
-      width: 200px;
-    }
-    button {
-      background-color: white;
-      color: #007BFF;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to App1</h1>
-  <p>Please enter your username to continue:</p>
-  
-  <form onsubmit="handleLogin(event)">
-    <input type="text" id="username" placeholder="Enter username" required />
-    <br/>
-    <button type="submit">Login</button>
-  </form>
+
+  <div id="login-form">
+    <h2>Please enter your username</h2>
+    <form onsubmit="handleLogin(event)">
+      <input type="text" id="username" placeholder="Username" required><br>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <div id="main-content">
+    <h1>Welcome to App1</h1>
+    <p id="welcome-msg"></p>
+    <p>This is the App1 interface with a blue background.</p>
+  </div>
 
   <script>
     function handleLogin(event) {
       event.preventDefault();
       const username = document.getElementById('username').value;
-      alert("Hello, " + username + "!");
-      // You can redirect or store username in sessionStorage/localStorage
+      document.getElementById('welcome-msg').innerText = `Hello, ${username}!`;
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
     }
   </script>
+
 </body>
 </html>
