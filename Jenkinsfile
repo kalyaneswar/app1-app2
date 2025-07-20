@@ -22,15 +22,14 @@ pipeline {
             }
         }
 
-    stages {
-        stage('Checkout Code') {
-            steps {
-                // Pull the latest code from the Git repository
-                checkout scm
+        stages {
+            stage('Checkout Code') {
+                steps {
+                    // Pull the latest code from the Git repository
+                    checkout scm
+                }
             }
         }
-
-    }
 
         stage('Build Docker Images') {
             steps {
