@@ -55,8 +55,8 @@ pipeline {
             steps{
                 script{
                     sh '''
-                        docker push kalyaneswar/$APP1_IMAGE:$VERSION_APP1'
-                        docker push kalyaneswar/$APP2_IMAGE:$VERSION_APP2'
+                        docker push kalyaneswarm/$APP1_IMAGE:$VERSION_APP1'
+                        docker push kalyaneswarm/$APP2_IMAGE:$VERSION_APP2'
 
                     '''
                 }
